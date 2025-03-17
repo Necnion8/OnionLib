@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group = 'onionlib'
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:24.0.0'
+}
+
