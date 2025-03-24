@@ -1,8 +1,17 @@
 # OnionLib
-Minecraftプラグインの開発を少し楽にするかもしれないクラスたち
+Minecraftプラグインの開発を少し楽にするかもしれないクラスたち (開発中)
 
 
 ## Configuration
+
+### 実装
+
+| file                                                                                         | description          |
+|----------------------------------------------------------------------------------------------|----------------------|
+| [BukkitConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitConfiguration.java)     | 設定クラス for Bukkit     |
+| [BungeeConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeConfiguration.java)     | 設定クラス for BungeeCord |
+| [VelocityConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityConfiguration.java) | 設定クラス for Velocity   |
+
 
 
 ## Command
@@ -20,6 +29,13 @@ Paper 1.16.5 など、ネイティブで対応しているサーバーは [docs.
 対応しない古いサーバーなどでは [Necnion8/KyoriAdventureLib](https://github.com/Necnion8/KyoriAdventureLib) をサーバーに導入することで対応します。
 
 ### 実装
+
+| file                                                                             | description        |
+|----------------------------------------------------------------------------------|--------------------|
+| [Command.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java)                 | 共通のコマンド実装クラス       |
+| [BukkitCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java)     | 登録クラス for Bukkit   |
+| [BungeeCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java)     | 登録クラス for Bukkit   |
+| [VelocityCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java) | 登録クラス for Velocity |
 
 #### コマンドの実装例
 ```java
@@ -98,7 +114,7 @@ public class BukkitPluginMain extends JavaPlugin {
 }
 ```
 
-#### より短く (Paper 1.16.5 以降のみ)
+**より短く (Paper 1.16.5 以降のみ)**
 ```java
 public class BukkitPluginMain extends JavaPlugin {
     @Override
