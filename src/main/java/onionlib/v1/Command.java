@@ -71,7 +71,7 @@ public class Command {
         context.commands().add(this);
 
         if (!context.testPermission()) {
-            context.send(Component.text("You don't have permission", NamedTextColor.RED));
+            context.send(getLang(context, LangKey.NO_PERMISSION));
             return;
         }
 

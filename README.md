@@ -23,19 +23,24 @@ Minecraftプラグインの開発を少し楽にするかもしれないクラ�
 - プラットフォームに依存しない
 
 ### 前提
+#### 導入サーバー
 メッセージ処理に必要な [KyoriPowered/adventure Library](https://github.com/KyoriPowered/adventure) がサーバー環境で利用できる必要があります。  
 Paper 1.16.5 など、ネイティブで対応しているサーバーは [docs.advntr.dev](https://docs.advntr.dev/platform/native.html) で確認できます。
 
 対応しない古いサーバーなどでは [Necnion8/KyoriAdventureLib](https://github.com/Necnion8/KyoriAdventureLib) をサーバーに導入することで対応します。
 
+#### 依存関係
+- [net.kyori:adventure-api](https://docs.advntr.dev/getting-started.html)
+- 使用するサーバーの基本API (bukkit-api など)
+
 ### 実装
 
-| file                                                                             | description        |
-|----------------------------------------------------------------------------------|--------------------|
-| [Command.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java)                 | 共通のコマンド実装クラス       |
-| [BukkitCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java)     | 登録クラス for Bukkit   |
-| [BungeeCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java)     | 登録クラス for Bukkit   |
-| [VelocityCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java) | 登録クラス for Velocity |
+| file                                                                             | description          |
+|----------------------------------------------------------------------------------|----------------------|
+| [Command.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java)                 | 共通のコマンド実装クラス         |
+| [BukkitCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java)     | 登録クラス for Bukkit     |
+| [BungeeCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java)     | 登録クラス for BungeeCord |
+| [VelocityCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java) | 登録クラス for Velocity   |
 
 #### コマンドの実装例
 ```java

@@ -64,6 +64,14 @@ public class VelocityCommand implements SimpleCommand {
         return c;
     }
 
+    /**
+     * {@link Command} を Velocity コマンドに変換します
+     */
+    @SuppressWarnings("UnusedReturnValue")
+    public static VelocityCommand register(ProxyServer proxy, Command command, Consumer<CommandMeta.Builder> builder) {
+        return register(proxy, command, null, builder);
+    }
+
 
     /**
      * {@link CommandSource}のコマンドLib用のクラスを作成します<br>
