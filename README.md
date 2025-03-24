@@ -2,15 +2,87 @@
 Minecraftプラグインの開発を少し楽にするかもしれないクラスたち
 
 
-### Configuration
+## Configuration
 
 
-### Command
+## Command
+### 主な機能
+- ネスト可能なサブコマンド
+- 引数パラメータ
+- プレフィックス挿入
+- シンプルコマンド一覧
+- プラットフォームに依存しない
 
-#### for Bukkit
+### 前提
+メッセージ処理に必要な [KyoriPowered/adventure Library](https://github.com/KyoriPowered/adventure) がサーバー環境で利用できる必要があります。  
+Paper 1.16.5 など、ネイティブで対応しているサーバーは [docs.advntr.dev](https://docs.advntr.dev/platform/native.html) で確認できます。
+
+対応しない古いサーバーなどでは [Necnion8/KyoriAdventureLib](https://github.com/Necnion8/KyoriAdventureLib) をサーバーに導入することで対応します。
+
+### 実装
+
+#### コマンドの実装例
+```java
+public class TestCommand extends Command {
+    public TestCommand() {
+        super("test", "example.command");
+
+        // set prefix
+        messagePrefix(Component.text()
+                .append(Component.text("[", NamedTextColor.GRAY))
+                .append(Component.text("OnionLib", NamedTextColor.AQUA))
+                .append(Component.text("] ", NamedTextColor.GRAY)), true);
+
+        // /test help
+        addHelpCommand().defaultCommand();
+        // /test reload
+        addChild("reload", this::reload);
+        // /test sub <int/bool/str> [ ..]
+        addChildApply("sub", c -> {
+            // /test sub int (number)
+            c.addChild("int", this::subInt)
+                    .argumentInt(0, 10);  // min, max
+            // /test sub bool <true/false>
+            c.addChild("bool", this::subBool)
+                    .argumentBool();
+            // /test sub str [value]
+            c.addChild("str", this::subString)
+                    .argumentString();
+        });
+    }
+
+    private void reload(Context ctx) {
+        ctx.send(Component.text("Configuration reloaded!", NamedTextColor.GREEN));
+    }
+
+    private void subInt(Context ctx) {
+        int value = ctx.get(IntArg.class);  // not optional
+        ctx.send(Component.text("The value is " + value + "!", NamedTextColor.GOLD));
+    }
+
+    private void subBool(Context ctx) {
+        boolean value = ctx.get(BoolArg.class);  // not optional
+        ctx.send(Component.text("The value is " + value + "!", NamedTextColor.GOLD));
+    }
+
+    private void subString(Context ctx) {
+        String value = ctx.getOptional(StringArg.class).orElse(null);  // optional
+        if (value != null) {
+            ctx.send(Component.text("The value is \"" + value + "\"!", NamedTextColor.GOLD));
+        } else {
+            ctx.send(Component.text("No value specified!", NamedTextColor.YELLOW));
+        }
+    }
+}
+```
+サンプル: [SampleCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fsample%2FSampleCommand.java)
+
+#### コマンドの登録 for Bukkit
+<details>
+<summary>サンプル表示</summary>
+
 ```java
 public class BukkitPluginMain extends JavaPlugin {
-
     private final BukkitCommand.Compat compat = BukkitCommand.compat(this);
 
     @Override
@@ -25,3 +97,58 @@ public class BukkitPluginMain extends JavaPlugin {
     }
 }
 ```
+
+#### より短く (Paper 1.16.5 以降のみ)
+```java
+public class BukkitPluginMain extends JavaPlugin {
+    @Override
+    public void onEnable() {
+        BukkitCommand.register(this, new TestCommand());
+    }
+}
+```
+</details>
+
+#### コマンドの登録 for BungeeCord
+<details>
+<summary>サンプル表示</summary>
+
+```java
+public class BungeePluginMain extends Plugin {
+    private final BungeeCommand.Compat compat = BungeeCommand.compat(this);
+
+    @Override
+    public void onEnable() {
+        compat.init();
+        compat.register(new TestCommand());
+    }
+
+    @Override
+    public void onDisable() {
+        compat.close();
+    }
+}
+```
+</details>
+
+#### コマンドの登録 for Velocity
+<details>
+<summary>サンプル表示</summary>
+
+```java
+@Plugin(id = "examplecommand")
+public final class VelocityPluginMain {
+    private final ProxyServer proxy;
+
+    @Inject
+    public VelocityMain(ProxyServer proxy) {
+        this.proxy = proxy;
+    }
+
+    @Subscribe
+    public void onProxyInitialize(ProxyInitializeEvent event) {
+        VelocityCommand.register(proxy, new TestCommand(), metaBuilder -> {});
+    }
+}
+```
+</details>

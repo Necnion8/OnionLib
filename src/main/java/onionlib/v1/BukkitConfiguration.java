@@ -1,4 +1,4 @@
-package onionlib.config.v1;
+package onionlib.v1;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteStreams;
@@ -77,10 +77,10 @@ public class BukkitConfiguration {
                 config = new YamlConfiguration();
             }
 
-            return onLoaded(config);
+            return onLoaded();
 
         } catch (IOException e) {
-            log.severe("Unable to load file: " + fileName + ": " + e.getClass().getName() + ": " + e.getLocalizedMessage());
+            log.severe("Unable to load file: " + fileName + ": " + e.getClass().getSimpleName() + ": " + e.getLocalizedMessage());
 
         } catch (Exception e) {
             log.log(Level.SEVERE, "Unable to load file: " + fileName, e);
@@ -99,7 +99,7 @@ public class BukkitConfiguration {
             }
 
         } catch (IOException e) {
-            log.severe("Unable to save file: " + fileName + ": " + e.getClass().getName() + ": " + e.getLocalizedMessage());
+            log.severe("Unable to save file: " + fileName + ": " + e.getClass().getSimpleName() + ": " + e.getLocalizedMessage());
 
         } catch (Exception e) {
             log.log(Level.SEVERE, "Unable to save file: " + fileName, e);
@@ -107,7 +107,7 @@ public class BukkitConfiguration {
         return false;
     }
 
-    public boolean onLoaded(YamlConfiguration config) {
+    protected boolean onLoaded() {
         return true;
     }
 
