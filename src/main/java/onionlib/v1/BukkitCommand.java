@@ -167,7 +167,7 @@ public class BukkitCommand implements TabExecutor {
                 command.unregister(plugin);
             }
             commands.clear();
-            cloeAudiences();
+            closeAudiences();
         }
 
         protected void initAudiences() {
@@ -192,7 +192,7 @@ public class BukkitCommand implements TabExecutor {
             }
         }
 
-        protected void cloeAudiences() {
+        protected void closeAudiences() {
             audienceResolver = null;
             if (bukkitAudiences != null) {
                 try {
