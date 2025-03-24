@@ -1,4 +1,4 @@
-package onionlib.command.v1;
+package onionlib.v1;
 
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
@@ -1220,11 +1220,15 @@ public class Command {
         }
     }
 
+    public interface AudienceResolver {
+        Audience getAudience(Object sender);
+    }
+
     public enum LangKey {
         NO_PERMISSION(Component.text("このコマンドを実行する権限がありません", NamedTextColor.RED)),
         PLAYER_ONLY(Component.text("このコマンドはプレイヤー専用です", NamedTextColor.RED)),
         COMMAND_UNKNOWN(Component.text("不明なコマンドです: ", NamedTextColor.RED)),
-        COMMAND_LIST_HEADER(Component.text("コマンドリスト:", NamedTextColor.DARK_AQUA)),
+        COMMAND_LIST_HEADER(Component.text("コマンド一覧:", NamedTextColor.DARK_AQUA)),
         COMMAND_LIST_EMPTY_COMMANDS(Component.text("利用可能なサブコマンドはありません。:(", NamedTextColor.GRAY, TextDecoration.ITALIC)),
         ARGUMENT_REQUIRED(Component.text("引数が必要です: ", NamedTextColor.RED)),
         ARGUMENT_INVALID(Component.text("引数の値が無効です: ", NamedTextColor.RED)),
