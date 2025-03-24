@@ -6,11 +6,11 @@ Minecraftプラグインの開発を少し楽にするかもしれないクラ�
 
 ### 実装
 
-| file                                                                                         | description          |
-|----------------------------------------------------------------------------------------------|----------------------|
-| [BukkitConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitConfiguration.java)     | 設定クラス for Bukkit     |
-| [BungeeConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeConfiguration.java)     | 設定クラス for BungeeCord |
-| [VelocityConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityConfiguration.java) | 設定クラス for Velocity   |
+| file                                                                                                                                                                       | description          |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitConfiguration.java?raw=1) [BukkitConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitConfiguration.java)       | 設定クラス for Bukkit     |
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeConfiguration.java?raw=1) [BungeeConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeConfiguration.java)       | 設定クラス for BungeeCord |
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityConfiguration.java?raw=1) [VelocityConfiguration.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityConfiguration.java) | 設定クラス for Velocity   |
 
 
 
@@ -35,12 +35,12 @@ Paper 1.16.5 など、ネイティブで対応しているサーバーは [docs.
 
 ### 実装
 
-| file                                                                             | description          |
-|----------------------------------------------------------------------------------|----------------------|
-| [Command.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java)                 | 共通のコマンド実装クラス         |
-| [BukkitCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java)     | 登録クラス for Bukkit     |
-| [BungeeCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java)     | 登録クラス for BungeeCord |
-| [VelocityCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java) | 登録クラス for Velocity   |
+| file                                                                                                                                                     | description          |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java?raw=1) [Command.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FCommand.java)                         | 共通のコマンド実装クラス         |
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java?raw=1) [BukkitCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBukkitCommand.java)       | 登録クラス for Bukkit     |
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java?raw=1) [BungeeCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FBungeeCommand.java)       | 登録クラス for BungeeCord |
+| [[raw]](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java?raw=1) [VelocityCommand.java](src%2Fmain%2Fjava%2Fonionlib%2Fv1%2FVelocityCommand.java) | 登録クラス for Velocity   |
 
 #### コマンドの実装例
 ```java
