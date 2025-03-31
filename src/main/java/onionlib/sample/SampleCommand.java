@@ -156,11 +156,6 @@ public class SampleCommand extends Command {
      * /<command> listguilds
      * /<command> addguild (id) [name]
      * /<command> removeguild (id)
-     * /<command> section aaa
-     * /<command> section bbb a
-     * /<command> section bbb b
-     * /<command> section ccc (a) (b) a
-     * /<command> section ccc (a) (b) b
      */
     public SampleCommand() {
         super("test", null);

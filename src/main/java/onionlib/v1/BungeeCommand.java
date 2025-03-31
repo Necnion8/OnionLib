@@ -206,7 +206,7 @@ public class BungeeCommand extends net.md_5.bungee.api.plugin.Command implements
      * 外部ライブラリの BungeeAudience を使用して AudienceResolver を作成
      */
     public static Command.AudienceResolver createBungeeAudiencesResolver(Object bungeeAudiences) throws ReflectiveOperationException {
-        Method senderMethod = Class.forName("net.kyori.adventure.platform.bungee.BungeeAudiences").getMethod("sender", CommandSender.class);
+        Method senderMethod = Class.forName("net.kyori.adventure.platform.bungeecord.BungeeAudiences").getMethod("sender", CommandSender.class);
         return sender -> {
             try {
                 //noinspection JavaReflectionInvocation
@@ -218,7 +218,7 @@ public class BungeeCommand extends net.md_5.bungee.api.plugin.Command implements
     }
 
     public static Object createBungeeAudiences(Plugin plugin) throws ReflectiveOperationException {
-        Class<?> bungeeAudiencesClass = Class.forName("net.kyori.adventure.platform.bungee.BungeeAudiences");
+        Class<?> bungeeAudiencesClass = Class.forName("net.kyori.adventure.platform.bungeecord.BungeeAudiences");
         Method createMethod = bungeeAudiencesClass.getMethod("create", Plugin.class);
         return createMethod.invoke(null, plugin);
     }

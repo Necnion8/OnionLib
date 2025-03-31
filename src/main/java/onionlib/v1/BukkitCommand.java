@@ -238,7 +238,7 @@ public class BukkitCommand implements TabExecutor {
         };
     }
 
-    public static Object createBukkitAudiences(JavaPlugin plugin) throws ReflectiveOperationException {
+    public static Object createBukkitAudiences(Plugin plugin) throws ReflectiveOperationException {
         Class<?> bukkitAudiencesClass = Class.forName("net.kyori.adventure.platform.bukkit.BukkitAudiences");
         Method createMethod = bukkitAudiencesClass.getMethod("create", Plugin.class);
         return createMethod.invoke(null, plugin);
