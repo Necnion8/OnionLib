@@ -339,8 +339,11 @@ public class Command {
     protected List<String> complete(Context context) {
         try {
             List<String> args = context.argsList();
-            if (args.isEmpty())
-                return Collections.emptyList();
+            if (args.isEmpty()) {
+                if (context.args.length != 0)
+                    return Collections.emptyList();
+                args.add("");  // fix velocity
+            }
 
             String input = context.nextArg();
             for (Argument.Registered<?> argument : arguments) {
