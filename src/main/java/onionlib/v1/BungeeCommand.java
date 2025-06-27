@@ -152,6 +152,14 @@ public class BungeeCommand extends net.md_5.bungee.api.plugin.Command implements
             return wrap;
         }
 
+        @SuppressWarnings("UnusedReturnValue")
+        public BungeeCommand register(Command command, @Nullable String permission, String... aliases) {
+            BungeeCommand wrap = new BungeeCommand(command, this, permission, aliases);
+            wrap.register(plugin);
+            commands.put(command.getName(), wrap);
+            return wrap;
+        }
+
         public Map<String, BungeeCommand> commands() {
             return commands;
         }
